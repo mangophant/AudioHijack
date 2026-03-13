@@ -1,0 +1,33 @@
+# @package _group_
+name: phi4_mini
+scheme: continuous
+audio_type: [speech, sound, music]
+voice_chat: true
+tool_use: true
+tool_call_limit: 2
+accum_grad: false
+weight_path:
+  lalm_path: ${weight_dir}/lalm/Phi-4-Mini
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  _from_model_config: true
+  bos_token_id: 199999
+  eos_token_id: [200020, 199999]
+  pad_token_id: 199999
+  max_new_tokens: 512
+  use_cache: true
+  use_fast: true
+  do_sample: true
+  temperature: 0.7
+fbank_config:
+  sample_rate: 16000
+  n_fft: 512
+  win_length: 400
+  hop_length: 160
+  chunk_length: 30
+  n_mels: 80
+  n_samples: 480000
+  min_frequency: 0.0
+  max_frequency: 7690.0
+  preemphasis: 0.97

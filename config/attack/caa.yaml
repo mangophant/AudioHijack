@@ -1,0 +1,21 @@
+# @package _group_
+name: caa
+batch_size: 4
+train_size: 100
+carrier: speech_carrier0
+carrier_length: 15
+rir_type: ln
+rir_length: 3200
+rir_overlap: 160
+alpha: 1
+beta: 50
+kappa: 0.015
+continuous:
+  lr: 0.001
+  steps: 2000
+discrete:
+  lr: 0.01
+  steps: 3000
+hybrid:
+  lr: 0.001
+  steps: 2000

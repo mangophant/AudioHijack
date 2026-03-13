@@ -1,0 +1,32 @@
+# @package _group_
+name: qwen2_audio
+scheme: continuous
+audio_type: [speech, sound, music]
+voice_chat: true
+tool_use: false
+accum_grad: true
+weight_path:
+  lalm_path: ${weight_dir}/lalm/Qwen2-Audio-7B-Instruct
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  chat_format: chatml
+  eos_token_id: [151643,151645]
+  pad_token_id: 151643
+  do_sample: true
+  top_k: 20
+  top_p: 0.5
+  temperature: 0.7
+  repetition_penalty: 1.1
+  max_new_tokens: 512
+  use_cache: true
+fbank_config:
+  sample_rate: 16000
+  n_fft: 400
+  win_length: 400
+  hop_length: 160
+  chunk_length: 30
+  n_mels: 128
+  n_samples: 480000
+  min_frequency: 0.0
+  max_frequency: 8000.0

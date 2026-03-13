@@ -1,0 +1,31 @@
+# @package _group_
+name: qwen_audio
+scheme: continuous
+audio_type: [speech, sound, music]
+voice_chat: false
+tool_use: false
+accum_grad: false
+weight_path:
+  lalm_path: ${weight_dir}/lalm/Qwen-Audio-Chat
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  chat_format: chatml
+  eos_token_id: 151643
+  pad_token_id: 151643
+  max_window_size: 6144
+  max_new_tokens: 512
+  use_cache: true
+  do_sample: true
+  top_k: 0
+  top_p: 0.5
+fbank_config:
+  sample_rate: 16000
+  n_fft: 400
+  win_length: 400
+  hop_length: 160
+  chunk_length: 30
+  n_mels: 80
+  n_samples: 480000
+  min_frequency: 0.0
+  max_frequency: 8000.0

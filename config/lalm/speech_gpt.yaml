@@ -1,0 +1,23 @@
+# @package _group_
+name: speech_gpt
+scheme: discrete
+audio_type: [speech]
+voice_chat: true
+tool_use: false
+accum_grad: true
+weight_path:
+  tokenizer_path: ${weight_dir}/encoder/HuBERT-base
+  lalm_path: ${weight_dir}/lalm/SpeechGPT-7B
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  do_sample: true
+  max_new_tokens: 512
+  use_cache: true
+  min_new_tokens: 1
+  temperature: 0.8
+  top_k: 60
+  top_p: 0.8
+fbank_config:
+  sample_rate: 16000
+  n_samples: 480000

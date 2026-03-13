@@ -1,0 +1,34 @@
+# @package _group_
+name: llama_omni2
+scheme: continuous
+audio_type: [speech]
+voice_chat: true
+tool_use: false
+accum_grad: false
+weight_path:
+  encoder_path: ${weight_dir}/encoder/Whisper-large-v3/large-v3.pt
+  lalm_path: ${weight_dir}/lalm/LLaMA-Omni2-7B-Bilingual
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  do_sample: true
+  temperature: 0.7
+  top_k: 20
+  top_p: 0.8
+  num_beams: 1
+  repetition_penalty: 1.05
+  max_new_tokens: 512
+  use_cache: true
+  pad_token_id: 151643
+  bos_token_id: 151643
+  eos_token_id: [151645, 151643]
+fbank_config:
+  sample_rate: 16000
+  n_fft: 400
+  win_length: 400
+  hop_length: 160
+  chunk_length: 30
+  n_mels: 128
+  n_samples: 480000
+  min_frequency: 0.0
+  max_frequency: 8000.0

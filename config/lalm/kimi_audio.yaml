@@ -1,0 +1,34 @@
+# @package _group_
+name: kimi_audio
+scheme: hybrid
+audio_type: [speech, sound, music]
+voice_chat: true
+tool_use: false
+accum_grad: false
+weight_path:
+  tokenizer_path: ${weight_dir}/encoder/GLM-4-Voice-tokenizer
+  encoder_path: ${weight_dir}/encoder/Whisper-large-v3
+  lalm_path: ${weight_dir}/lalm/Kimi-Audio-7B-Instruct
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  audio_top_k: 20
+  audio_temperature: 0.8
+  audio_repetition_penalty: 1.0
+  audio_repetition_window_size: 64
+  text_top_k: 20
+  text_temperature: 0.8
+  text_repetition_penalty: 1.0
+  text_repetition_window_size: 16
+  max_new_tokens: 512
+  use_cache: true
+fbank_config:
+  sample_rate: 16000
+  n_fft: 400
+  win_length: 400
+  hop_length: 160
+  chunk_length: 30
+  n_mels: 128
+  n_samples: 480000
+  min_frequency: 0.0
+  max_frequency: 8000.0

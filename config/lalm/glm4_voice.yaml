@@ -1,0 +1,31 @@
+# @package _group_
+name: glm4_voice
+scheme: discrete
+audio_type: [speech]
+voice_chat: true
+tool_use: false
+accum_grad: false
+weight_path:
+  tokenizer_path: ${weight_dir}/encoder/GLM-4-Voice-tokenizer
+  lalm_path: ${weight_dir}/lalm/GLM-4-Voice-9B
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  do_sample: true
+  eos_token_id: [151329, 151336, 151338]
+  max_length: 128000
+  max_new_tokens: 512
+  use_cache: true
+  pad_token_id: 151329
+  temperature: 0.8
+  top_p: 0.8
+fbank_config:
+  sample_rate: 16000
+  n_fft: 400
+  win_length: 400
+  hop_length: 160
+  chunk_length: 30
+  n_mels: 128
+  n_samples: 480000
+  min_frequency: 0.0
+  max_frequency: 8000.0

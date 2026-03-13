@@ -1,0 +1,30 @@
+# @package _group_
+name: voxtral_mini
+scheme: continuous
+audio_type: [speech]
+voice_chat: true
+tool_use: true
+tool_call_limit: 2
+accum_grad: false
+weight_path:
+  lalm_path: ${weight_dir}/lalm/Voxtral-Mini-3B-2507
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  bos_token_id: 1
+  eos_token_id: 2
+  pad_token_id: 11
+  max_new_tokens: 512
+  use_cache: true
+  do_sample: true
+  temperature: 0.7
+fbank_config:
+  sample_rate: 16000
+  n_fft: 400
+  win_length: 400
+  hop_length: 160
+  chunk_length: 30
+  n_mels: 128
+  n_samples: 480000
+  min_frequency: 0.0
+  max_frequency: 8000.0

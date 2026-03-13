@@ -1,0 +1,20 @@
+root_dir: /path/to/AudioHijack
+weight_dir: ${root_dir}/weight
+data_dir: ${root_dir}/data
+target_path: ${root_dir}/config/target.jsonl
+seed: 2025
+gpu: true
+device: 0
+bf16: true
+save_audio: true
+
+defaults:
+  - lalm: voxtral_mini
+  - attack: caa
+  - _self_
+
+hydra:
+  run:
+    dir: exp/attack/${lalm.name}_${attack.name}
+  job:
+    name: alpha${attack.alpha}_beta${attack.beta}_${attack.carrier}_len${attack.carrier_length}_size${attack.train_size}_rir_${attack.rir_type}_${attack.rir_length}

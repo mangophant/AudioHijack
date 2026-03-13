@@ -1,0 +1,42 @@
+# @package _group_
+name: salmonn
+scheme: continuous
+audio_type: [speech, sound, music]
+voice_chat: false
+tool_use: false
+accum_grad: false
+weight_path:
+  whisper_encoder_path: ${weight_dir}/encoder/Whisper-large-v2
+  beats_encoder_path: ${weight_dir}/encoder/BEATs-as2m/BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2.pt
+  llm_path: ${weight_dir}/backbone/Vicuna-7B-v1.5
+  lalm_path: ${weight_dir}/lalm/SALMONN-7B/salmonn_7b_v0.pth
+parameter:
+  ignore_index: -100
+  num_speech_query_token: 1
+  second_per_window: 0.333333
+  second_stride: 0.333333
+  lora_rank: 8
+  lora_alpha: 32
+  lora_dropout: 0.1
+  start_sym: "<s>"
+  end_sym: "</s>"
+generate_kwargs:
+  max_new_tokens: 512
+  num_beams: 4
+  do_sample: true
+  min_length: 1
+  temperature: 1.0
+  top_p: 0.9
+  repetition_penalty: 1.0
+  length_penalty: 1.0
+  stop_words_ids: [2]
+fbank_config:
+  sample_rate: 16000
+  n_fft: 400
+  win_length: 400
+  hop_length: 160
+  chunk_length: 30
+  n_samples: 480000
+  n_mels: 80
+  min_frequency: 0.0
+  max_frequency: 8000.0

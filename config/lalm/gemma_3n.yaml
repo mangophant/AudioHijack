@@ -1,0 +1,32 @@
+# @package _group_
+name: gemma_3n
+scheme: continuous
+audio_type: [speech]
+voice_chat: false
+tool_use: false
+accum_grad: false
+weight_path:
+  lalm_path: ${weight_dir}/lalm/Gemma-3n-E2B-it
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  bos_token_id: 2
+  cache_implementation: hybrid
+  do_sample: true
+  eos_token_id: [1, 106]
+  pad_token_id: 0
+  top_k: 64
+  top_p: 0.95
+  max_new_tokens: 256
+  use_cache: true
+fbank_config:
+  sample_rate: 16000
+  n_fft: 1024
+  win_length: 512
+  hop_length: 160
+  chunk_length: 30
+  n_mels: 128
+  n_samples: 480000
+  min_frequency: 125.0
+  max_frequency: 7600.0
+

@@ -1,0 +1,33 @@
+# @package _group_
+name: ultravox
+scheme: continuous
+audio_type: [speech]
+voice_chat: true
+tool_use: true
+tool_call_limit: 2
+accum_grad: false
+weight_path:
+  encoder_path: ${weight_dir}/encoder/Whisper-large-v3-turbo
+  llm_path: ${weight_dir}/backbone/Llama-3.1-8B-Instruct
+  lalm_path: ${weight_dir}/lalm/Ultravox-v0.5-Llama-8B
+parameter:
+  ignore_index: -100
+generate_kwargs:
+  do_sample: true
+  temperature: 0.6
+  top_p: 0.9
+  bos_token_id: 128000
+  eos_token_id: [128001, 128008, 128009]
+  pad_token_id: 128009
+  max_new_tokens: 512
+  use_cache: true
+fbank_config:
+  sample_rate: 16000
+  n_fft: 400
+  win_length: 400
+  hop_length: 160
+  chunk_length: 30
+  n_mels: 128
+  n_samples: 480000
+  min_frequency: 0.0
+  max_frequency: 8000.0

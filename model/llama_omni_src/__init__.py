@@ -1,0 +1,9 @@
+from transformers import AutoConfig, AutoModelForCausalLM
+from .omni_speech_llama import OmniSpeechConfig, OmniSpeechLlamaForCausalLM
+from .omni2_speech_qwen2 import Omni2SpeechQwen2Config, Omni2SpeechQwen2ForCausalLM
+
+
+AutoConfig.register("omni_speech2s_llama", OmniSpeechConfig)
+AutoModelForCausalLM.register(OmniSpeechConfig, OmniSpeechLlamaForCausalLM)
+AutoConfig.register("omni2_speech2s_qwen2", Omni2SpeechQwen2Config)
+AutoModelForCausalLM.register(Omni2SpeechQwen2Config, Omni2SpeechQwen2ForCausalLM)
